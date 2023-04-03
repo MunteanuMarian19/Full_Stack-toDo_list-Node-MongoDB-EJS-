@@ -37,7 +37,7 @@ const itemsSchema = {
   name: String,
 };
 
-const Item = mongoose.model("Item", itemsSchema); //the model for the schema, "item" == singular form
+const Item = mongoose.model("Item", itemsSchema); //the model for the schema, "item" === singular form
 
 //the default itmes, when you start
 const item1 = new Item({
@@ -58,7 +58,7 @@ const listSchema = {
   name: String,
   items: [itemsSchema],
 };
-//creating a model("List") from "listSchema" for every new list we create, by just by typing "http://localhost:3000/xxxxxx"
+//creating a model("List") from "listSchema" for every new list we create, just by typing "http://localhost:3000/xxxxxx"
 const List = mongoose.model("List", listSchema); //"List" is the singular form of our collection
 
 //GET:
@@ -97,8 +97,7 @@ app.get("/:customListName", async (req, res) => {
       const list = new List({
         //new list based on the "List" model
         name: customListName, //the name user puts as a title for the list
-        itmes: defaultItems, //populated by default with the "defaultItems" array
-        //"items" is from "listSchema"
+        itmes: defaultItems, //populated by default with the "defaultItems" array "items" is from "listSchema"
       });
       list.save();
       res.redirect("/" + customListName);
